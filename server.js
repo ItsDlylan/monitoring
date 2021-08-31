@@ -25,8 +25,6 @@ app.post('/api/student', (req, res) => {
 	res.status(200).send(students);
 });
 
-app.listen(port, () => console.log(`take us to warp ${port}`));
-
 var Rollbar = require('rollbar');
 var rollbar = new Rollbar({
 	accessToken: '346521dca7414267ae955ca4dc98413a',
@@ -35,3 +33,5 @@ var rollbar = new Rollbar({
 });
 
 app.use(rollbar.errorHandler());
+
+app.listen(port, () => console.log(`take us to warp ${port}`));
