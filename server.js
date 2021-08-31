@@ -8,6 +8,7 @@ const port = process.env.PORT || 4545;
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, './public/index.html'));
+	rollbar.info('html file served succesfully');
 });
 
 app.listen(port, () => console.log(`take us to warp ${port}`));
@@ -18,5 +19,3 @@ var rollbar = new Rollbar({
 	captureUncaught: true,
 	captureUnhandledRejections: true,
 });
-
-rollbar.log('this was my first rollbar log.');
