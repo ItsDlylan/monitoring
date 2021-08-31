@@ -4,8 +4,6 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
-app.use(rollbar.errorHandler());
-
 const port = process.env.PORT || 4545;
 const students = [];
 
@@ -13,6 +11,7 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, './public/index.html'));
 	rollbar.info('html file served succesfully');
 });
+
 app.post('/api/student', (req, res) => {
 	let { name } = req.body;
 	name = name.trim();
@@ -34,3 +33,5 @@ var rollbar = new Rollbar({
 	captureUncaught: true,
 	captureUnhandledRejections: true,
 });
+
+app.use(rollbar.errorHandler());
