@@ -2,7 +2,9 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+
 app.use(express.json());
+app.use('/style', express.static('./public/styles.css'));
 
 const port = process.env.PORT || 4545;
 const students = [];
