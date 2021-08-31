@@ -11,3 +11,12 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => console.log(`take us to warp ${port}`));
+
+var Rollbar = require('rollbar');
+var rollbar = new Rollbar({
+	accessToken: '346521dca7414267ae955ca4dc98413a',
+	captureUncaught: true,
+	captureUnhandledRejections: true,
+});
+
+rollbar.log('this was my first rollbar log.');
